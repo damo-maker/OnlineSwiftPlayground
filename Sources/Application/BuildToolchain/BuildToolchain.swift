@@ -14,8 +14,7 @@ import SPMUtility
 #endif
 
 enum SwiftToolchain: String, RawRepresentable, Codable {
-    case swift5_0 = "5.0-RELEASE"
-    case swift5_1 = "5.1-RELEASE"
+    case swift3_0_2 = "3.0.2-RELEASE"
 
     // Path to toolchain, relative to current process PWD
     var path: AbsolutePath {
@@ -23,14 +22,6 @@ enum SwiftToolchain: String, RawRepresentable, Codable {
         return projectDirectoryPath.appending(components: "Toolchains", "swift-\(self.rawValue).xctoolchain", "usr", "bin")
     }
 
-    var swift_version: String {
-        switch self {
-        case .swift5_0:
-          return "5"
-        case .swift5_1:
-          return "5"
-        }
-    }
 }
 
 
@@ -63,7 +54,7 @@ class BuildToolchain {
         var cmd = [String]()
         cmd += ["\(toolchain.path.pathString)/swift"]
         cmd += ["--driver-mode=swiftc"]
-        cmd += ["-swift-version", toolchain.swift_version]
+        cmd += ["-swift-version", "3"]
         #if DEBUG
         cmd += ["-v"]
         #endif
