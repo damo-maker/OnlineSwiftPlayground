@@ -1,5 +1,5 @@
 #!/bin/bash
-SWIFT_VERSION="5.1-RELEASE"
+SWIFT_VERSION="3.0.2-RELEASE"
 SWIFT="Toolchains/swift-$SWIFT_VERSION.xctoolchain/usr/bin/swift"
 
 . bootstrap.sh
@@ -18,4 +18,3 @@ $SWIFT run -c release --build-path .build/swift-$SWIFT_VERSION &
 $(npm bin)/webpack -w
 
 killall -9 PlaygroundServer
-
